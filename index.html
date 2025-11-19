@@ -3,48 +3,101 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>HairLab — Прайсы</title>
 
 <style>
     body {
         margin: 0;
         background: #0d2bd7;
-        font-family: Arial, sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
         color: #ffffff;
+        scroll-behavior: smooth; /* Плавный скролл */
     }
 
-    /* ЛОГОТИП */
-    .logo {
-        text-align: center;
-        padding: 25px 0 10px;
+    .content {
+        width: 100%;
+        max-width: 920px;
+        margin: 0 auto;
     }
 
-    .logo img {
-        width: 160px;
-        opacity: 0.95;
+    /* === ФИКСИРОВАННОЕ МЕНЮ === */
+    .nav {
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        background: rgba(0, 0, 0, 0.35);
+        backdrop-filter: blur(12px);
+        padding: 8px 10px;
+        display: flex;
+        gap: 10px;
+        justify-content: center;
     }
 
-    /* ЗАГОЛОВКИ КАТЕГОРИЙ */
+    .nav button {
+        background: rgba(255,255,255,0.22);
+        border: none;
+        padding: 10px 14px;
+        border-radius: 12px;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        letter-spacing: 0.3px;
+        transition: background 0.15s ease;
+    }
+
+    .nav button:hover {
+        background: rgba(255,255,255,0.32);
+    }
+
+    .nav button:active {
+        transform: scale(0.96);
+    }
+
+    /* ЗАГОЛОВОК КАТЕГОРИИ */
     h2 {
-        font-size: 22px;
-        margin: 40px 20px 15px;
+        font-size: 20px;
+        margin: 32px 18px 14px;
         padding-bottom: 10px;
         border-bottom: 2px solid rgba(255,255,255,0.35);
         font-weight: 700;
+        letter-spacing: 0.3px;
     }
 
-    /* БЛОК КАТЕГОРИИ */
-    .category {
+    /* INTРО-БЛОК */
+    .intro {
+        width: 94%;
+        margin: 18px auto 30px;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 10px 22px rgba(0,0,0,0.28);
+    }
+
+    .intro img {
+        width: 100%;
+        display: block;
+    }
+
+    /* СЕТКА */
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        padding: 0 16px;
+    }
+
+    .section {
         margin-bottom: 40px;
     }
 
-    /* КАРТИНКИ */
+    /* КАРТОЧКИ */
     .card {
-        margin: 20px auto;
-        width: 92%;
-        border-radius: 15px;
+        background: rgba(0,0,0,0.18);
+        border-radius: 14px;
         overflow: hidden;
-        box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+        box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+        transition: transform 0.12s ease, box-shadow 0.12s ease;
     }
 
     .card img {
@@ -53,51 +106,100 @@
         display: block;
     }
 
+    .card:active {
+        transform: scale(0.98);
+        box-shadow: 0 4px 11px rgba(0,0,0,0.28);
+    }
+
+    /* ПЛАНШЕТ */
+    @media (min-width: 768px) {
+        .grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            padding: 0 24px;
+        }
+
+        h2 {
+            font-size: 22px;
+            margin: 40px 24px 16px;
+        }
+
+        .intro {
+            width: 85%;
+        }
+    }
+
+    /* ПК */
+    @media (min-width: 1024px) {
+        .grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 0;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin: 40px 0 16px;
+        }
+    }
 </style>
 </head>
 <body>
 
-<!-- ЛОГОТИП -->
-<div class="logo">
-    <img src="Преимущества.jpeg" alt="HairLab logo">
-</div>
+<div class="content">
 
+    <!-- === ФИКСИРОВАННОЕ МЕНЮ === -->
+    <div class="nav">
+        <button onclick="document.getElementById('viypr').scrollIntoView()">Выпрямление</button>
+        <button onclick="document.getElementById('uhod').scrollIntoView()">Уходы</button>
+        <button onclick="document.getElementById('okrash').scrollIntoView()">Окрашивание</button>
+    </div>
 
-<!-- 1. ВЫПРЯМЛЕНИЕ / РАЗГЛАЖИВАНИЕ -->
-<div class="category">
-    <h2>ПРОЦЕДУРЫ ДЛЯ ВЫПРЯМЛЕНИЯ / РАЗГЛАЖИВАНИЯ ВОЛОС</h2>
+    <!-- ВЕРХНИЙ БЛОК -->
+    <div class="intro">
+        <img src="Преимущества.jpeg">
+    </div>
 
-    <div class="card"><img src="Преимущества.jpeg"></div>
-    <div class="card"><img src="Ботокс.jpg"></div>
-    <div class="card"><img src="Биксипластия 2в1.jpg"></div>
-    <div class="card"><img src="Кератин коллаген.jpg"></div>
-    <div class="card"><img src="Кератин.jpg"></div>
-    <div class="card"><img src="Тотальная прайс.jpg"></div>
-    <div class="card"><img src="Виски.JPG"></div>
-    <div class="card"><img src="Нанопластика.jpeg"></div>
-    <div class="card"><img src="Бразилиан.jpeg"></div>
-</div>
+    <!-- 1. ВЫПРЯМЛЕНИЕ -->
+    <div id="viypr" class="section">
+        <h2>ПРОЦЕДУРЫ ДЛЯ ВЫПРЯМЛЕНИЯ / РАЗГЛАЖИВАНИЯ ВОЛОС</h2>
 
+        <div class="grid">
+            <div class="card"><img src="Ботокс.jpg"></div>
+            <div class="card"><img src="Биксипластия 2в1.jpg"></div>
+            <div class="card"><img src="Кератин коллаген.jpg"></div>
+            <div class="card"><img src="Кератин.jpg"></div>
+            <div class="card"><img src="totalnaya.jpg"></div>
+            <div class="card"><img src="Виски.JPG"></div>
+            <div class="card"><img src="Нанопластика.jpeg"></div>
+            <div class="card"><img src="Бразилиан.jpeg"></div>
+        </div>
+    </div>
 
-<!-- 2. УХОДЫ + СТРИЖКИ -->
-<div class="category">
-    <h2>УХОДОВЫЕ ПРОЦЕДУРЫ + СТРИЖКИ</h2>
+    <!-- 2. УХОДЫ -->
+    <div id="uhod" class="section">
+        <h2>УХОДОВЫЕ ПРОЦЕДУРЫ + СТРИЖКИ</h2>
 
-    <div class="card"><img src="Холодное восстановление.jpeg"></div>
-    <div class="card"><img src="Счастье для волос.jpeg"></div>
-    <div class="card"><img src="Адорн.jpeg"></div>
-    <div class="card"><img src="Диагностика+пилинг.jpg"></div>
-    <div class="card"><img src="Авторская стрижка(полировка).jpg"></div>
-    <div class="card"><img src="Стрижка.jpeg"></div>
-</div>
+        <div class="grid">
+            <div class="card"><img src="Холодное восстановление.jpeg"></div>
+            <div class="card"><img src="Счастье для волос.jpeg"></div>
+            <div class="card"><img src="Адорн.jpeg"></div>
+            <div class="card"><img src="Диагностика+пилинг.jpg"></div>
+            <div class="card"><img src="Авторская стрижка(полировка).jpg"></div>
+            <div class="card"><img src="Стрижка.jpeg"></div>
+        </div>
+    </div>
 
+    <!-- 3. ОКРАШИВАНИЕ -->
+    <div id="okrash" class="section">
+        <h2>ОКРАШИВАНИЕ И БИОЗАВИВКА</h2>
 
-<!-- 3. ОКРАШИВАНИЕ И БИОЗАВИВКА -->
-<div class="category">
-    <h2>ОКРАШИВАНИЕ И БИОЗАВИВКА</h2>
+        <div class="grid">
+            <div class="card"><img src="Окрашивание.JPG"></div>
+            <div class="card"><img src="Биозавивка.jpg"></div>
+        </div>
+    </div>
 
-    <div class="card"><img src="Окрашивание.JPG"></div>
-    <div class="card"><img src="Биозавивка.jpg"></div>
 </div>
 
 </body>
