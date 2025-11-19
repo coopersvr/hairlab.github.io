@@ -12,16 +12,17 @@
         background: #0d2bd7;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
         color: #ffffff;
-        scroll-behavior: smooth; /* Плавный скролл */
+        scroll-behavior: smooth;
     }
 
     .content {
         width: 100%;
         max-width: 920px;
         margin: 0 auto;
+        padding-bottom: 80px;
     }
 
-    /* === ФИКСИРОВАННОЕ МЕНЮ === */
+    /* ФИКСИРОВАННОЕ МЕНЮ */
     .nav {
         position: sticky;
         top: 0;
@@ -30,32 +31,36 @@
         backdrop-filter: blur(12px);
         padding: 8px 10px;
         display: flex;
-        gap: 10px;
+        gap: 8px;
         justify-content: center;
     }
 
     .nav button {
         background: rgba(255,255,255,0.22);
         border: none;
-        padding: 10px 14px;
+        padding: 8px 12px;
         border-radius: 12px;
         color: #fff;
-        font-size: 14px;
+        font-size: 13px;
         font-weight: 600;
         cursor: pointer;
         letter-spacing: 0.3px;
-        transition: background 0.15s ease;
+        transition: background 0.15s ease, transform 0.12s ease, box-shadow 0.12s ease;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+        white-space: nowrap;
     }
 
     .nav button:hover {
         background: rgba(255,255,255,0.32);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
 
     .nav button:active {
         transform: scale(0.96);
+        box-shadow: 0 2px 6px rgba(0,0,0,0.35);
     }
 
-    /* ЗАГОЛОВОК КАТЕГОРИИ */
+    /* ЗАГОЛОВКИ */
     h2 {
         font-size: 20px;
         margin: 32px 18px 14px;
@@ -65,7 +70,7 @@
         letter-spacing: 0.3px;
     }
 
-    /* INTРО-БЛОК */
+    /* ВЕРХНИЙ БЛОК */
     .intro {
         width: 94%;
         margin: 18px auto 30px;
@@ -79,6 +84,10 @@
         display: block;
     }
 
+    .section {
+        margin-bottom: 40px;
+    }
+
     /* СЕТКА */
     .grid {
         display: grid;
@@ -87,17 +96,25 @@
         padding: 0 16px;
     }
 
-    .section {
-        margin-bottom: 40px;
-    }
-
     /* КАРТОЧКИ */
     .card {
         background: rgba(0,0,0,0.18);
         border-radius: 14px;
         overflow: hidden;
-        box-shadow: 0 6px 16px rgba(0,0,0,0.25);
-        transition: transform 0.12s ease, box-shadow 0.12s ease;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.28);
+        transform: translateY(16px);
+        opacity: 0;
+        transition:
+            transform 0.35s ease-out,
+            opacity 0.35s ease-out,
+            box-shadow 0.15s ease,
+            outline 0.15s ease,
+            outline-offset 0.15s ease;
+    }
+
+    .card.visible {
+        transform: translateY(0);
+        opacity: 1;
     }
 
     .card img {
@@ -106,9 +123,13 @@
         display: block;
     }
 
+    /* Glow-эффект */
+    .card:hover,
     .card:active {
-        transform: scale(0.98);
-        box-shadow: 0 4px 11px rgba(0,0,0,0.28);
+        box-shadow: 0 0 18px rgba(255,255,255,0.35);
+        outline: 1px solid rgba(255,255,255,0.4);
+        outline-offset: 2px;
+        transform: translateY(-2px);
     }
 
     /* ПЛАНШЕТ */
@@ -127,6 +148,11 @@
         .intro {
             width: 85%;
         }
+
+        .nav button {
+            padding: 9px 14px;
+            font-size: 14px;
+        }
     }
 
     /* ПК */
@@ -142,22 +168,76 @@
             margin: 40px 0 16px;
         }
     }
+
+    /* ПЛАВАЮЩАЯ КНОПКА WHATSAPP */
+    .fab-whatsapp {
+        position: fixed;
+        right: 16px;
+        bottom: 18px;
+        z-index: 1000;
+        background: #25D366;
+        color: #ffffff;
+        border-radius: 999px;
+        padding: 10px 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 600;
+        font-size: 13px;
+        cursor: pointer;
+        box-shadow: 0 8px 18px rgba(0,0,0,0.35);
+        border: none;
+        transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.15s ease;
+    }
+
+    .fab-whatsapp:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 22px rgba(0,0,0,0.4);
+        background: #20bd5a;
+    }
+
+    .fab-whatsapp:active {
+        transform: translateY(0);
+        box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+    }
+
+    .fab-icon {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: 2px solid #ffffff;
+        position: relative;
+    }
+
+    .fab-icon::after {
+        content: "";
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        border-right: 2px solid #ffffff;
+        border-bottom: 2px solid #ffffff;
+        transform: rotate(40deg);
+        left: 3px;
+        top: 1px;
+    }
 </style>
 </head>
 <body>
 
 <div class="content">
 
-    <!-- === ФИКСИРОВАННОЕ МЕНЮ === -->
+    <!-- НАВИГАЦИЯ -->
     <div class="nav">
-        <button onclick="document.getElementById('viypr').scrollIntoView()">Выпрямление</button>
-        <button onclick="document.getElementById('uhod').scrollIntoView()">Уходы</button>
-        <button onclick="document.getElementById('okrash').scrollIntoView()">Окрашивание</button>
+        <button onclick="scrollToId('viypr')">Выпрямление</button>
+        <button onclick="scrollToId('uhod')">Уходы</button>
+        <button onclick="scrollToId('okrash')">Окрашивание</button>
+        <button onclick="openWhatsApp()">Записаться</button>
     </div>
 
     <!-- ВЕРХНИЙ БЛОК -->
     <div class="intro">
-        <img src="Преимущества.jpeg">
+        <img src="Преимущества.jpeg" alt="Преимущества HairLab">
     </div>
 
     <!-- 1. ВЫПРЯМЛЕНИЕ -->
@@ -201,6 +281,41 @@
     </div>
 
 </div>
+
+<!-- ПЛАВАЮЩАЯ КНОПКА WHATSAPP -->
+<button class="fab-whatsapp" onclick="openWhatsApp()">
+    <div class="fab-icon"></div>
+    <span>WhatsApp</span>
+</button>
+
+<script>
+    function scrollToId(id) {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function openWhatsApp() {
+        const phone = "79528883050"; // ← твой номер
+        const text = encodeURIComponent("Здравствуйте! Хочу записаться на процедуру в HairLab.");
+        const url = "https://wa.me/" + phone + "?text=" + text;
+        window.open(url, "_blank");
+    }
+
+    // fade-up анимация
+    document.addEventListener("DOMContentLoaded", function () {
+        const cards = document.querySelectorAll(".card");
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        cards.forEach(card => observer.observe(card));
+    });
+</script>
 
 </body>
 </html>
