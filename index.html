@@ -9,7 +9,7 @@
 <style>
     body {
         margin: 0;
-        background: #0d2bd7; /* фирменный синий фон */
+        background: linear-gradient(180deg, #2f53ff 0%, #5d7dff 100%);
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
         color: #ffffff;
         scroll-behavior: smooth;
@@ -19,7 +19,7 @@
         width: 100%;
         max-width: 920px;
         margin: 0 auto;
-        padding-bottom: 80px; /* запас под кнопкой WhatsApp */
+        padding-bottom: 90px;
     }
 
     /* ===== GLASS НАВИГАЦИЯ ===== */
@@ -33,12 +33,12 @@
         gap: 8px;
         justify-content: center;
 
-        background: rgba(5, 12, 60, 0.6);
+        background: rgba(5, 12, 60, 0.55);
         border-radius: 999px;
-        box-shadow: 0 12px 26px rgba(0,0,0,0.45);
+        box-shadow: 0 12px 26px rgba(0,0,0,0.35);
         backdrop-filter: blur(18px) saturate(150%);
         -webkit-backdrop-filter: blur(18px) saturate(150%);
-        border: 1px solid rgba(255,255,255,0.22);
+        border: 1px solid rgba(255,255,255,0.25);
     }
 
     .nav button {
@@ -51,61 +51,36 @@
         font-weight: 600;
         cursor: pointer;
         letter-spacing: 0.3px;
-        transition:
-            background 0.15s ease,
-            transform 0.12s ease,
-            box-shadow 0.12s ease,
-            border-color 0.12s ease;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.35);
+        transition: 0.15s ease;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.25);
         white-space: nowrap;
     }
 
     .nav button:hover {
         background: rgba(255,255,255,0.18);
-        box-shadow: 0 6px 14px rgba(0,0,0,0.45);
-        border-color: rgba(255,255,255,0.4);
+        border-color: rgba(255,255,255,0.35);
+        box-shadow: 0 6px 14px rgba(0,0,0,0.35);
     }
 
     .nav button:active {
-        transform: scale(0.96);
-        box-shadow: 0 3px 9px rgba(0,0,0,0.5);
+        transform: scale(0.95);
     }
 
-    /* Главная кнопка "Записаться" — чуть ярче и с подсветкой */
-    .nav-cta {
-        background: rgba(255,255,255,0.2);
-        border-color: rgba(173, 209, 255, 0.9);
-        box-shadow: 0 0 16px rgba(130, 190, 255, 0.85);
-        padding: 8px 18px;
-    }
-
-    .nav-cta:hover {
-        background: rgba(255,255,255,0.26);
-        box-shadow: 0 0 20px rgba(150, 200, 255, 1);
-    }
-
-    .nav-cta:active {
-        box-shadow: 0 0 16px rgba(140, 195, 255, 0.95);
-    }
-
-    /* ЗАГОЛОВКИ БЛОКОВ */
+    /* ЗАГОЛОВКИ */
     h2 {
         font-size: 20px;
         margin: 32px 18px 14px;
         padding-bottom: 12px;
         font-weight: 700;
         letter-spacing: 0.3px;
-        border-bottom: none; /* линию даём через ::after */
     }
 
-    /* Анимация заголовков + линия */
+    /* Анимация заголовков */
     .title {
         opacity: 0;
         transform: translateY(16px);
         position: relative;
-        transition:
-            opacity 0.45s ease-out,
-            transform 0.45s ease-out;
+        transition: 0.45s ease-out;
     }
 
     .title.visible-title {
@@ -128,15 +103,15 @@
         width: 100%;
     }
 
-    /* ВЕРХНИЙ БЛОК ПРЕИМУЩЕСТВ — ЛЁГКОЕ "СТЕКЛО" */
+    /* Блок преимущества */
     .intro {
         width: 94%;
         margin: 18px auto 30px;
         border-radius: 22px;
         overflow: hidden;
-        box-shadow: 0 14px 30px rgba(0,0,0,0.45);
-        background: rgba(255,255,255,0.06);
-        border: 1px solid rgba(255,255,255,0.2);
+        box-shadow: 0 14px 30px rgba(0,0,0,0.3);
+        background: rgba(255,255,255,0.07);
+        border: 1px solid rgba(255,255,255,0.25);
         backdrop-filter: blur(14px) saturate(140%);
         -webkit-backdrop-filter: blur(14px) saturate(140%);
         cursor: pointer;
@@ -147,11 +122,7 @@
         display: block;
     }
 
-    .section {
-        margin-bottom: 40px;
-    }
-
-    /* СЕТКА КАРТОЧЕК */
+    /* СЕТКА */
     .grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -159,24 +130,19 @@
         padding: 0 16px;
     }
 
-    /* GLASS-КАРТОЧКИ */
+    /* КАРТОЧКИ */
     .card {
         background: rgba(255,255,255,0.08);
         border-radius: 18px;
         overflow: hidden;
-        box-shadow: 0 12px 26px rgba(0,0,0,0.5);
-        border: 1px solid rgba(255,255,255,0.22);
+        box-shadow: 0 12px 26px rgba(0,0,0,0.4);
+        border: 1px solid rgba(255,255,255,0.25);
         backdrop-filter: blur(16px) saturate(150%);
         -webkit-backdrop-filter: blur(16px) saturate(150%);
 
-        transform: translateY(16px);
+        transform: translateY(18px);
         opacity: 0;
-        transition:
-            transform 0.35s ease-out,
-            opacity 0.35s ease-out,
-            box-shadow 0.15s ease,
-            outline 0.15s ease,
-            outline-offset 0.15s ease;
+        transition: 0.35s ease-out;
         cursor: pointer;
     }
 
@@ -187,90 +153,76 @@
 
     .card img {
         width: 100%;
-        height: auto;
         display: block;
     }
 
-    /* glow при взаимодействии */
-    .card:hover,
-    .card:active,
-    .intro:hover,
-    .intro:active {
-        box-shadow:
-            0 16px 36px rgba(0,0,0,0.65),
-            0 0 16px rgba(185, 215, 255, 0.9);
-        outline: 1px solid rgba(195,220,255,0.85);
+    .card:hover {
+        box-shadow: 0 16px 36px rgba(0,0,0,0.55), 0 0 16px rgba(185, 215, 255, 0.9);
+        transform: translateY(-3px);
+        outline: 1px solid rgba(195,220,255,0.8);
         outline-offset: 2px;
-        transform: translateY(-2px);
     }
 
-    /* ПЛАНШЕТ */
-    @media (min-width: 768px) {
-        .grid {
-            grid-template-columns: repeat(3, 1fr);
-            gap: 18px;
-            padding: 0 24px;
-        }
-
-        h2 {
-            font-size: 22px;
-            margin: 40px 24px 16px;
-        }
-
-        .intro {
-            width: 85%;
-        }
-
-        .nav button {
-            padding: 9px 14px;
-            font-size: 14px;
-        }
-    }
-
-    /* ПК */
-    @media (min-width: 1024px) {
-        .grid {
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            padding: 0;
-        }
-
-        h2 {
-            font-size: 24px;
-            margin: 40px 0 16px;
-        }
-    }
-
-    /* ПЛАВАЮЩАЯ КНОПКА WHATSAPP */
-    .fab-whatsapp {
+    /* ПЛАВАЮЩЕЕ МЕНЮ */
+    .fab-wrapper {
         position: fixed;
         right: 16px;
         bottom: 18px;
         z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 8px;
+    }
+
+    .fab-menu {
+        display: none;
+        flex-direction: column;
+        gap: 6px;
+        margin-bottom: 4px;
+    }
+
+    .fab-menu.open {
+        display: flex;
+    }
+
+    .fab-option {
+        border: none;
+        border-radius: 999px;
+        padding: 8px 14px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #ffffff;
+        cursor: pointer;
+        min-width: 130px;
+        box-shadow: 0 10px 22px rgba(0,0,0,0.5);
+    }
+
+    .whatsapp { background: #25D366; }
+    .telegram { background: #229ED9; }
+    .instagram {
+        background: radial-gradient(circle at 30% 30%,
+            #fdf497 0, #fdf497 8%, #fd5949 45%, #d6249f 60%, #285AEB 100%);
+    }
+
+    .fab-main {
         background: #25D366;
         color: #ffffff;
         border-radius: 999px;
         padding: 10px 16px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-weight: 600;
         font-size: 13px;
+        font-weight: 600;
         cursor: pointer;
-        box-shadow: 0 12px 26px rgba(0,0,0,0.6);
         border: none;
-        transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.15s ease;
+        display: flex;
+        gap: 8px;
+        box-shadow: 0 12px 26px rgba(0,0,0,0.6);
+        transition: 0.12s ease;
     }
 
-    .fab-whatsapp:hover {
+    .fab-main:hover {
         transform: translateY(-2px);
-        box-shadow: 0 14px 32px rgba(0,0,0,0.7);
         background: #20bd5a;
-    }
-
-    .fab-whatsapp:active {
-        transform: translateY(0);
-        box-shadow: 0 10px 22px rgba(0,0,0,0.65);
     }
 
     .fab-icon {
@@ -286,7 +238,6 @@
         position: absolute;
         width: 6px;
         height: 6px;
-        border-radius: 50%;
         border-right: 2px solid #ffffff;
         border-bottom: 2px solid #ffffff;
         transform: rotate(40deg);
@@ -294,7 +245,7 @@
         top: 1px;
     }
 
-    /* МОДАЛЬНОЕ ОКНО ДЛЯ УВЕЛИЧЕНИЯ КАРТИНОК */
+    /* МОДАЛЬНАЯ КАРТИНКА */
     .modal-overlay {
         position: fixed;
         inset: 0;
@@ -315,7 +266,7 @@
         max-height: 90vh;
         border-radius: 18px;
         box-shadow:
-            0 20px 40px rgba(0,0,0,0.8),
+            0 20px 40px rgba(0,0,0,0.7),
             0 0 24px rgba(200,220,255,0.9);
     }
 </style>
@@ -324,138 +275,156 @@
 
 <div class="content">
 
-    <!-- GLASS-НАВИГАЦИЯ -->
+    <!-- НАВИГАЦИЯ -->
     <div class="nav">
         <button onclick="scrollToId('viypr')">Выпрямление</button>
         <button onclick="scrollToId('uhod')">Уходы</button>
         <button onclick="scrollToId('okrash')">Окрашивание</button>
-        <button class="nav-cta" onclick="openWhatsApp()">Записаться</button>
     </div>
 
-    <!-- ВЕРХНИЙ БЛОК "ПРЕИМУЩЕСТВА" -->
+    <!-- ПРЕИМУЩЕСТВА -->
     <div class="intro zoomable">
         <img src="Преимущества.jpeg" alt="Преимущества HairLab">
     </div>
 
-    <!-- 1. ВЫПРЯМЛЕНИЕ -->
+    <!-- ВЫПРЯМЛЕНИЕ -->
     <div id="viypr" class="section">
         <h2 class="title">ПРОЦЕДУРЫ ДЛЯ ВЫПРЯМЛЕНИЯ / РАЗГЛАЖИВАНИЯ ВОЛОС</h2>
 
         <div class="grid">
-            <div class="card"><img src="Ботокс.jpg" alt="Ботокс"></div>
-            <div class="card"><img src="Биксипластия 2в1.jpg" alt="Биксипластия 2в1"></div>
-            <div class="card"><img src="Кератин коллаген.jpg" alt="Кератин коллаген"></div>
-            <div class="card"><img src="Кератин.jpg" alt="Кератиновое выпрямление"></div>
-            <div class="card"><img src="totalnaya.jpg" alt="Тотальная реконструкция"></div>
-            <div class="card"><img src="Виски.JPG" alt="Виски зона"></div>
-            <div class="card"><img src="Нанопластика.jpeg" alt="Нанопластика"></div>
-            <div class="card"><img src="Бразилиан.jpeg" alt="Amino Brazilian"></div>
+            <div class="card"><img src="Ботокс.jpg" alt=""></div>
+            <div class="card"><img src="Биксипластия 2в1.jpg" alt=""></div>
+            <div class="card"><img src="Кератин коллаген.jpg" alt=""></div>
+            <div class="card"><img src="Кератин.jpg" alt=""></div>
+            <div class="card"><img src="totalnaya.jpg" alt=""></div>
+            <div class="card"><img src="Виски.JPG" alt=""></div>
+            <div class="card"><img src="Нанопластика.jpeg" alt=""></div>
+            <div class="card"><img src="Бразилиан.jpeg" alt=""></div>
         </div>
     </div>
 
-    <!-- 2. УХОДЫ -->
+    <!-- УХОДЫ -->
     <div id="uhod" class="section">
-        <h2 class="title">УХОДОВЫЕ ПРОЦЕДУРЫ + СТРИЖКИ</h2>
+        <h2 class="title">УХОДЫ + СТРИЖКИ</h2>
 
         <div class="grid">
-            <div class="card"><img src="Холодное восстановление.jpeg" alt="Холодное восстановление"></div>
-            <div class="card"><img src="Счастье для волос.jpeg" alt="Счастье для волос"></div>
-            <div class="card"><img src="Адорн.jpeg" alt="Adorn уход"></div>
-            <div class="card"><img src="Диагностика+пилинг.jpg" alt="Диагностика и пилинг"></div>
-            <div class="card"><img src="Авторская стрижка(полировка).jpg" alt="Авторская стрижка"></div>
-            <div class="card"><img src="Стрижка.jpeg" alt="Стрижка"></div>
+            <div class="card"><img src="Холодное восстановление.jpeg" alt=""></div>
+            <div class="card"><img src="Счастье для волос.jpeg" alt=""></div>
+            <div class="card"><img src="Адорн.jpeg" alt=""></div>
+            <div class="card"><img src="Диагностика+пилинг.jpg" alt=""></div>
+            <div class="card"><img src="Авторская стрижка(полировка).jpg" alt=""></div>
+            <div class="card"><img src="Стрижка.jpeg" alt=""></div>
         </div>
     </div>
 
-    <!-- 3. ОКРАШИВАНИЕ -->
+    <!-- ОКРАШИВАНИЕ -->
     <div id="okrash" class="section">
         <h2 class="title">ОКРАШИВАНИЕ И БИОЗАВИВКА</h2>
 
         <div class="grid">
-            <div class="card"><img src="Окрашивание.JPG" alt="Окрашивание"></div>
-            <div class="card"><img src="Биозавивка.jpg" alt="Биозавивка"></div>
+            <div class="card"><img src="Окрашивание.JPG" alt=""></div>
+            <div class="card"><img src="Биозавивка.jpg" alt=""></div>
         </div>
     </div>
 
 </div>
 
-<!-- ПЛАВАЮЩАЯ КНОПКА WHATSAPP -->
-<button class="fab-whatsapp" onclick="openWhatsApp()">
-    <div class="fab-icon"></div>
-    <span>WhatsApp</span>
-</button>
+<!-- МЕНЮ "ЗАПИСАТЬСЯ" -->
+<div id="fabWrapper" class="fab-wrapper">
+    <div id="fabMenu" class="fab-menu">
+        <button class="fab-option whatsapp" onclick="openWhatsApp()">WhatsApp</button>
+        <button class="fab-option telegram" onclick="openTelegram()">Telegram</button>
+        <button class="fab-option instagram" onclick="openInstagram()">Instagram</button>
+    </div>
 
-<!-- МОДАЛЬНОЕ ОКНО ДЛЯ УВЕЛИЧЕННОЙ КАРТИНКИ -->
+    <button id="fabMain" class="fab-main">
+        <div class="fab-icon"></div>
+        <span>Записаться</span>
+    </button>
+</div>
+
+<!-- МОДАЛЬНОЕ УВЕЛИЧЕНИЕ КАРТОК -->
 <div id="imageModal" class="modal-overlay">
     <img id="modalImage" src="" alt="">
 </div>
 
 <script>
     function scrollToId(id) {
-        const el = document.getElementById(id);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
+        document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
     }
 
     function openWhatsApp() {
-        const phone = "79528883050"; // твой номер
-        const text = encodeURIComponent("Здравствуйте! Хочу записаться на процедуру в HairLab.");
-        const url = "https://wa.me/" + phone + "?text=" + text;
-        window.open(url, "_blank");
+        const phone = "79528883050";
+        const text = encodeURIComponent("Здравствуйте! Хочу записаться в HairLab.");
+        window.open("https://wa.me/" + phone + "?text=" + text, "_blank");
+    }
+
+    function openTelegram() {
+        window.open("https://t.me/hairlab_tomsk", "_blank");
+    }
+
+    function openInstagram() {
+        window.open("https://instagram.com/hairlab_", "_blank");
     }
 
     document.addEventListener("DOMContentLoaded", function () {
+
+        /* Появление карточек */
         const cards = document.querySelectorAll(".card");
-        const titles = document.querySelectorAll(".title");
-        const modal = document.getElementById("imageModal");
-        const modalImage = document.getElementById("modalImage");
-
-        /* Анимация появления карточек */
         const cardObserver = new IntersectionObserver((entries, obs) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("visible");
-                    obs.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.15 });
-
-        cards.forEach(card => cardObserver.observe(card));
-
-        /* Анимация заголовков */
-        const titleObserver = new IntersectionObserver((entries, obs) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("visible-title");
-                    obs.unobserve(entry.target);
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add("visible");
+                    obs.unobserve(e.target);
                 }
             });
         }, { threshold: 0.2 });
 
-        titles.forEach(title => titleObserver.observe(title));
+        cards.forEach(c => cardObserver.observe(c));
 
-        /* Увеличение картинки при клике (intro + карточки) */
-        const zoomImages = document.querySelectorAll(".card img, .intro img");
+        /* Анимация заголовков */
+        const titles = document.querySelectorAll(".title");
+        const titleObserver = new IntersectionObserver((entries, obs) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add("visible-title");
+                    obs.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.2 });
 
-        zoomImages.forEach(img => {
+        titles.forEach(t => titleObserver.observe(t));
+
+        /* Увеличение картинок */
+        const modal = document.getElementById("imageModal");
+        const modalImage = document.getElementById("modalImage");
+
+        document.querySelectorAll(".card img, .intro img").forEach(img => {
             img.addEventListener("click", function () {
                 modalImage.src = this.src;
-                modalImage.alt = this.alt || "";
                 modal.classList.add("open");
                 document.body.style.overflow = "hidden";
             });
         });
 
-        /* Закрытие модалки по клику на фон или картинку */
         modal.addEventListener("click", function () {
             modal.classList.remove("open");
             document.body.style.overflow = "";
         });
 
-        /* Закрытие по ESC */
-        document.addEventListener("keydown", function (e) {
-            if (e.key === "Escape" && modal.classList.contains("open")) {
-                modal.classList.remove("open");
-                document.body.style.overflow = "";
+        /* Кнопка "Записаться" */
+        const fabWrapper = document.getElementById("fabWrapper");
+        const fabMain = document.getElementById("fabMain");
+        const fabMenu = document.getElementById("fabMenu");
+
+        fabMain.addEventListener("click", function (e) {
+            e.stopPropagation();
+            fabMenu.classList.toggle("open");
+        });
+
+        document.addEventListener("click", function (e) {
+            if (!fabWrapper.contains(e.target)) {
+                fabMenu.classList.remove("open");
             }
         });
     });
