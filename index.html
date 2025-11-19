@@ -7,6 +7,7 @@
 <title>HairLab — Прайсы</title>
 
 <style>
+    /* БАЗА */
     body {
         margin: 0;
         background: linear-gradient(180deg, #2f53ff 0%, #5d7dff 100%);
@@ -22,28 +23,32 @@
         padding-bottom: 90px;
     }
 
-    /* ===== GLASS НАВИГАЦИЯ ===== */
+    /* ===== GLASS НАВИГАЦИЯ (компактная, без лишних полей) ===== */
     .nav {
         position: sticky;
         top: 0;
         z-index: 999;
-        margin-top: 6px;
-        padding: 8px 10px;
-        display: flex;
-        gap: 8px;
-        justify-content: center;
 
-        background: rgba(5, 12, 60, 0.55);
-        border-radius: 999px;
-        box-shadow: 0 12px 26px rgba(0,0,0,0.35);
-        backdrop-filter: blur(18px) saturate(150%);
-        -webkit-backdrop-filter: blur(18px) saturate(150%);
-        border: 1px solid rgba(255,255,255,0.25);
+        margin: 6px auto 0;
+        padding: 6px 10px;
+
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+
+        background: rgba(5, 12, 60, 0.45);
+        border-radius: 22px;
+        width: fit-content;
+
+        box-shadow: 0 10px 18px rgba(0,0,0,0.22);
+        backdrop-filter: blur(14px) saturate(150%);
+        -webkit-backdrop-filter: blur(14px) saturate(150%);
+        border: 1px solid rgba(255,255,255,0.18);
     }
 
     .nav button {
-        background: rgba(255,255,255,0.12);
-        border: 1px solid rgba(255,255,255,0.22);
+        background: rgba(255,255,255,0.10);
+        border: 1px solid rgba(255,255,255,0.20);
         padding: 8px 12px;
         border-radius: 999px;
         color: #fff;
@@ -51,70 +56,57 @@
         font-weight: 600;
         cursor: pointer;
         letter-spacing: 0.3px;
-        transition: 0.15s ease;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+        transition: background 0.15s ease, transform 0.12s ease, border-color 0.12s ease;
         white-space: nowrap;
     }
 
     .nav button:hover {
         background: rgba(255,255,255,0.18);
-        border-color: rgba(255,255,255,0.35);
-        box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+        border-color: rgba(255,255,255,0.32);
     }
 
     .nav button:active {
-        transform: scale(0.95);
+        transform: scale(0.96);
     }
 
-    /* ЗАГОЛОВКИ */
+    /* ЗАГОЛОВКИ БЛОКОВ — без JS-анимаций */
     h2 {
         font-size: 20px;
         margin: 32px 18px 14px;
-        padding-bottom: 12px;
+        padding-bottom: 10px;
         font-weight: 700;
         letter-spacing: 0.3px;
-    }
-
-    /* Анимация заголовков */
-    .title {
-        opacity: 0;
-        transform: translateY(16px);
         position: relative;
-        transition: 0.45s ease-out;
     }
 
-    .title.visible-title {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    .title::after {
+    h2::after {
         content: "";
         position: absolute;
         left: 0;
-        bottom: -4px;
+        bottom: 0;
         height: 2px;
-        width: 0;
-        background: rgba(255,255,255,0.4);
-        transition: width 0.45s ease-out 0.25s;
-    }
-
-    .title.visible-title::after {
         width: 100%;
+        background: rgba(255,255,255,0.4);
     }
 
-    /* Блок преимущества */
+    /* Блок "Преимущества" */
     .intro {
         width: 94%;
         margin: 18px auto 30px;
         border-radius: 22px;
         overflow: hidden;
-        box-shadow: 0 14px 30px rgba(0,0,0,0.3);
-        background: rgba(255,255,255,0.07);
-        border: 1px solid rgba(255,255,255,0.25);
+        box-shadow: 0 14px 26px rgba(0,0,0,0.28);
+        background: rgba(255,255,255,0.06);
+        border: 1px solid rgba(255,255,255,0.22);
         backdrop-filter: blur(14px) saturate(140%);
         -webkit-backdrop-filter: blur(14px) saturate(140%);
         cursor: pointer;
+        transition: transform 0.14s ease, box-shadow 0.14s ease;
+    }
+
+    .intro:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 16px 30px rgba(0,0,0,0.30);
     }
 
     .intro img {
@@ -122,7 +114,7 @@
         display: block;
     }
 
-    /* СЕТКА */
+    /* СЕТКА КАРТОЧЕК */
     .grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -130,25 +122,17 @@
         padding: 0 16px;
     }
 
-    /* КАРТОЧКИ */
+    /* КАРТОЧКИ ПРАЙСОВ — без появления через JS, только лёгкий hover */
     .card {
         background: rgba(255,255,255,0.08);
         border-radius: 18px;
         overflow: hidden;
-        box-shadow: 0 12px 26px rgba(0,0,0,0.4);
-        border: 1px solid rgba(255,255,255,0.25);
+        box-shadow: 0 10px 22px rgba(0,0,0,0.28);
+        border: 1px solid rgba(255,255,255,0.22);
         backdrop-filter: blur(16px) saturate(150%);
         -webkit-backdrop-filter: blur(16px) saturate(150%);
-
-        transform: translateY(18px);
-        opacity: 0;
-        transition: 0.35s ease-out;
         cursor: pointer;
-    }
-
-    .card.visible {
-        transform: translateY(0);
-        opacity: 1;
+        transition: transform 0.14s ease, box-shadow 0.14s ease, border-color 0.14s ease;
     }
 
     .card img {
@@ -157,13 +141,12 @@
     }
 
     .card:hover {
-        box-shadow: 0 16px 36px rgba(0,0,0,0.55), 0 0 16px rgba(185, 215, 255, 0.9);
-        transform: translateY(-3px);
-        outline: 1px solid rgba(195,220,255,0.8);
-        outline-offset: 2px;
+        transform: translateY(-2px);
+        box-shadow: 0 14px 30px rgba(0,0,0,0.32);
+        border-color: rgba(210,225,255,0.9);
     }
 
-    /* ПЛАВАЮЩЕЕ МЕНЮ */
+    /* ПЛАВАЮЩЕЕ МЕНЮ "ЗАПИСАТЬСЯ" */
     .fab-wrapper {
         position: fixed;
         right: 16px;
@@ -195,10 +178,16 @@
         color: #ffffff;
         cursor: pointer;
         min-width: 140px;
-        box-shadow: 0 10px 22px rgba(0,0,0,0.5);
+        box-shadow: 0 8px 18px rgba(0,0,0,0.35);
         display: flex;
         align-items: center;
         gap: 8px;
+        transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease;
+    }
+
+    .fab-option:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.38);
     }
 
     .whatsapp { background: #25D366; }
@@ -232,9 +221,9 @@
         border: none;
         display: flex;
         gap: 8px;
-        box-shadow: 0 12px 26px rgba(0,0,0,0.6);
-        transition: 0.12s ease;
         align-items: center;
+        transition: transform 0.12s ease, background 0.15s ease;
+        /* без тени — чистый минимализм */
     }
 
     .fab-main:hover {
@@ -262,7 +251,7 @@
         top: 1px;
     }
 
-    /* МОДАЛЬНАЯ КАРТИНКА */
+    /* МОДАЛЬНАЯ КАРТИНКА (увеличение) */
     .modal-overlay {
         position: fixed;
         inset: 0;
@@ -306,7 +295,7 @@
 
     <!-- ВЫПРЯМЛЕНИЕ -->
     <div id="viypr" class="section">
-        <h2 class="title">ПРОЦЕДУРЫ ДЛЯ ВЫПРЯМЛЕНИЯ / РАЗГЛАЖИВАНИЯ ВОЛОС</h2>
+        <h2>ПРОЦЕДУРЫ ДЛЯ ВЫПРЯМЛЕНИЯ / РАЗГЛАЖИВАНИЯ ВОЛОС</h2>
 
         <div class="grid">
             <div class="card"><img src="Ботокс.jpg" alt=""></div>
@@ -322,7 +311,7 @@
 
     <!-- УХОДЫ -->
     <div id="uhod" class="section">
-        <h2 class="title">УХОДЫ + СТРИЖКИ</h2>
+        <h2>УХОДЫ + СТРИЖКИ</h2>
 
         <div class="grid">
             <div class="card"><img src="Холодное восстановление.jpeg" alt=""></div>
@@ -336,7 +325,7 @@
 
     <!-- ОКРАШИВАНИЕ -->
     <div id="okrash" class="section">
-        <h2 class="title">ОКРАШИВАНИЕ И БИОЗАВИВКА</h2>
+        <h2>ОКРАШИВАНИЕ И БИОЗАВИВКА</h2>
 
         <div class="grid">
             <div class="card"><img src="Окрашивание.JPG" alt=""></div>
@@ -395,7 +384,8 @@
 
 <script>
     function scrollToId(id) {
-        document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
     }
 
     function openWhatsApp() {
@@ -413,37 +403,10 @@
     }
 
     document.addEventListener("DOMContentLoaded", function () {
-
-        /* Появление карточек */
-        const cards = document.querySelectorAll(".card");
-        const cardObserver = new IntersectionObserver((entries, obs) => {
-            entries.forEach(e => {
-                if (e.isIntersecting) {
-                    e.target.classList.add("visible");
-                    obs.unobserve(e.target);
-                }
-            });
-        }, { threshold: 0.2 });
-
-        cards.forEach(c => cardObserver.observe(c));
-
-        /* Анимация заголовков */
-        const titles = document.querySelectorAll(".title");
-        const titleObserver = new IntersectionObserver((entries, obs) => {
-            entries.forEach(e => {
-                if (e.isIntersecting) {
-                    e.target.classList.add("visible-title");
-                    obs.unobserve(e.target);
-                }
-            });
-        }, { threshold: 0.2 });
-
-        titles.forEach(t => titleObserver.observe(t));
-
-        /* Увеличение картинок */
         const modal = document.getElementById("imageModal");
         const modalImage = document.getElementById("modalImage");
 
+        /* Увеличение картинок (минимально, без лишней логики) */
         document.querySelectorAll(".card img, .intro img").forEach(img => {
             img.addEventListener("click", function () {
                 modalImage.src = this.src;
@@ -457,7 +420,7 @@
             document.body.style.overflow = "";
         });
 
-        /* Кнопка "Записаться" */
+        /* Кнопка "Записаться" и меню */
         const fabWrapper = document.getElementById("fabWrapper");
         const fabMain = document.getElementById("fabMain");
         const fabMenu = document.getElementById("fabMenu");
