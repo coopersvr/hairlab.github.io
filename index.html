@@ -3,41 +3,102 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Прайсы HairLab</title>
+<title>HairLab — Прайсы</title>
+
 <style>
     body {
         margin: 0;
         background: #0d2bd7;
         font-family: Arial, sans-serif;
+        color: #ffffff;
     }
-    img {
+
+    /* ЛОГОТИП */
+    .logo {
+        text-align: center;
+        padding: 25px 0 10px;
+    }
+
+    .logo img {
+        width: 160px;
+        opacity: 0.95;
+    }
+
+    /* ЗАГОЛОВКИ КАТЕГОРИЙ */
+    h2 {
+        font-size: 22px;
+        margin: 40px 20px 15px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid rgba(255,255,255,0.35);
+        font-weight: 700;
+    }
+
+    /* БЛОК КАТЕГОРИИ */
+    .category {
+        margin-bottom: 40px;
+    }
+
+    /* КАРТИНКИ */
+    .card {
+        margin: 20px auto;
+        width: 92%;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+    }
+
+    .card img {
         width: 100%;
         height: auto;
         display: block;
-        margin: 0;
     }
+
 </style>
 </head>
 <body>
 
-<img src="Авторская стрижка(полировка).jpg">
-<img src="Адорн.jpeg">
-<img src="Биксипластия 2в1.jpg">
-<img src="Биозавивка.jpg">
-<img src="Ботокс.jpg">
-<img src="Бразилиан.jpeg">
-<img src="Виски.JPG">
-<img src="Диагностика+пилинг.jpg">
-<img src="Кератин коллаген.jpg">
-<img src="Кератин.jpg">
-<img src="Нанопластика.jpeg">
-<img src="Окрашивание.JPG">
-<img src="Преимущества.jpeg">
-<img src="Стрижка.jpeg">
-<img src="Счастье для волос.jpeg">
-<img src="Тотальная описание.jpg">
-<img src="Тотальная прайс.jpg">
-<img src="Холодное восстановление.jpeg">
+<!-- ЛОГОТИП -->
+<div class="logo">
+    <img src="Преимущества.jpeg" alt="HairLab logo">
+</div>
+
+
+<!-- 1. ВЫПРЯМЛЕНИЕ / РАЗГЛАЖИВАНИЕ -->
+<div class="category">
+    <h2>ПРОЦЕДУРЫ ДЛЯ ВЫПРЯМЛЕНИЯ / РАЗГЛАЖИВАНИЯ ВОЛОС</h2>
+
+    <div class="card"><img src="Преимущества.jpeg"></div>
+    <div class="card"><img src="Ботокс.jpg"></div>
+    <div class="card"><img src="Биксипластия 2в1.jpg"></div>
+    <div class="card"><img src="Кератин коллаген.jpg"></div>
+    <div class="card"><img src="Кератин.jpg"></div>
+    <div class="card"><img src="Тотальная прайс.jpg"></div>
+    <div class="card"><img src="Виски.JPG"></div>
+    <div class="card"><img src="Нанопластика.jpeg"></div>
+    <div class="card"><img src="Бразилиан.jpeg"></div>
+</div>
+
+
+<!-- 2. УХОДЫ + СТРИЖКИ -->
+<div class="category">
+    <h2>УХОДОВЫЕ ПРОЦЕДУРЫ + СТРИЖКИ</h2>
+
+    <div class="card"><img src="Холодное восстановление.jpeg"></div>
+    <div class="card"><img src="Счастье для волос.jpeg"></div>
+    <div class="card"><img src="Адорн.jpeg"></div>
+    <div class="card"><img src="Диагностика+пилинг.jpg"></div>
+    <div class="card"><img src="Авторская стрижка(полировка).jpg"></div>
+    <div class="card"><img src="Стрижка.jpeg"></div>
+</div>
+
+
+<!-- 3. ОКРАШИВАНИЕ И БИОЗАВИВКА -->
+<div class="category">
+    <h2>ОКРАШИВАНИЕ И БИОЗАВИВКА</h2>
+
+    <div class="card"><img src="Окрашивание.JPG"></div>
+    <div class="card"><img src="Биозавивка.jpg"></div>
+</div>
 
 </body>
 </html>
